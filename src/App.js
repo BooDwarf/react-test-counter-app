@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import { Container } from "./styles";
+import { InitialNumberContainer } from "./components/Initial_Number/styles";
+import {
+  IncreaseNumberContainer,
+  DecreaseNumberContainer,
+  IncreaseDecreaseButtonContainer
+} from "./components/Increase_Decrease/styles";
 
-function App() {
+import { Increase, Decrease, Reset } from "./components/Increase_Decrease";
+import { useState } from "react";
+
+const App = () => {
+  const [currentNumber, setCurrentNumber] = useState(0);
+
+  const handleIncrease = () => {
+    setCurrentNumber(prev => prev + 1);
+  };
+
+  const handleDecrease = () => {
+    setCurrentNumber(prev => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleReset = () => {
+    setCurrentNumber(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <h1 id="title">Counter</h1>
+
+      <InitialNumberContainer>
+        {currentNumber}
+      </InitialNumberContainer>
+
+      <IncreaseDecreaseButtonContainer>
+        <DecreaseNumberContainer>
+          <Decrease label="-" onClick={handleDecrease} />
+        </DecreaseNumberContainer>
+
+        <IncreaseNumberContainer>
+          <Increase label="+" onClick={handleIncrease} />
+        </IncreaseNumberContainer>
+
+        <Reset label="Reset" onClick={handleReset} />
+      </IncreaseDecreaseButtonContainer>
+    </Container>
   );
-}
+};
 
 export default App;
