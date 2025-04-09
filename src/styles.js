@@ -8,7 +8,6 @@ export const Container = styled.div`
     #title {
     text-align:center;
     padding-top: 20px;
-
     }
 `
 

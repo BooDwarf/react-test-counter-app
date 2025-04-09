@@ -43,15 +43,3 @@ export const IncreaseDecreaseButtonContainer = styled.div`
     padding: 10px 20px;
   }
 `;
-
-export const IncreaseNumberContainer = styled.div` 
-
-`
-
-export const DecreaseNumberContainer = styled.div`
-
-`
-
-export const ResetNumberContainer = styled.div`
-
-`;
